@@ -3,12 +3,12 @@
 
 class BTSWheels {
 private:
-	int LEFT_R_PWM = 5;
-	int LEFT_L_PWM = 6;
-	int RIGHT_R_PWM = 9;
-	int RIGHT_L_PWM = 10;
+	int LEFT_R_PWM = 6;
+	int LEFT_L_PWM = 5;
+	int RIGHT_R_PWM = 10;
+	int RIGHT_L_PWM = 9;
 
-	int MAX_SPEED = 200;
+	int MAX_SPEED = 255;
 
 	int lowStopBound = 472;
 	int highStopBound = 552;
@@ -16,24 +16,40 @@ private:
 	void leftForward(int a) {
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
+
+		Serial.print("left motor running forward at speed: ");
+		Serial.println(a);
+		
 		analogWrite(LEFT_R_PWM, a);
 		analogWrite(LEFT_L_PWM, 0);
 	}
 	void leftBackward(int a) {
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
+
+		Serial.print("left motor running backward at speed: ");
+		Serial.println(a);
+		
 		analogWrite(LEFT_R_PWM, 0);
 		analogWrite(LEFT_L_PWM, a);
 	}
 	void rightForward(int a) {
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
+
+		Serial.print("right motor running forward at speed: ");
+		Serial.println(a);
+		
 		analogWrite(RIGHT_R_PWM, 0);
 		analogWrite(RIGHT_L_PWM, a);
 	}
 	void rightBackward(int a) {
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
+		
+		Serial.print("right motor running backward at speed: ");
+		Serial.println(a);
+
 		analogWrite(RIGHT_R_PWM, a);
 		analogWrite(RIGHT_L_PWM, 0);
 	}

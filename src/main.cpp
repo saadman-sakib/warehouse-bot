@@ -30,15 +30,54 @@ void jack_downward(){
 }
 
 
+
+
 void setup() {
 	Serial.begin(9600);
 	wheels.init(5, 6, 9, 10);
-	pinMode(jack_up, OUTPUT);
-	pinMode(jack_down, OUTPUT);
-	pinMode(52, OUTPUT);
-
+	// pinMode(jack_up, OUTPUT);
+	// pinMode(jack_down, OUTPUT);
+	// pinMode(52, OUTPUT);
 }
 
 void loop() {
-	digitalWrite(52, HIGH);
+	while (Serial.available() == 0){}
+
+	String s = Serial.readString();
+	s.trim();
+	
+	String LR = s.substring(0,1);
+
+	int speed = s.substring(1).toInt();
+
+	Serial.println(LR);
+	Serial.println(speed);
+	Serial1.println("-----");
+
+	if(LR=="f"){
+		wheels.rightMotor(speed);
+		wheels.leftMotor(speed);
+	}
+	
+	if(LR=="b"){
+		wheels.rightMotor(-speed);
+		wheels.leftMotor(-speed);
+	}
+
+	if(LR=="r"){
+		wheels.rightMotor(-speed);
+		wheels.leftMotor(speed);
+	}
+
+	if(LR=="l"){
+		wheels.rightMotor(speed);
+		wheels.leftMotor(-speed);
+	}
+
+	if(LR=="s"){
+		wheels.leftMotor(0);
+		wheels.rightMotor(0);
+	}
+
 }
+
