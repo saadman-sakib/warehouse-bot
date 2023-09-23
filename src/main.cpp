@@ -51,6 +51,15 @@ void mpu_config_setup(Adafruit_MPU6050& mpu) {
 	// mpu.setMotionInterrupt(true);
 }
 
+void car_jack_test();
+
+void motor_test();
+
+void mpu6050_test();
+
+void tachometer_test();
+
+
 
 
 void setup() {
@@ -62,16 +71,16 @@ void setup() {
 	pinMode(TACH_PIN, INPUT);
 	newTickValue = digitalRead(TACH_PIN);
 
-	while (!mpu.begin()) {}
-	Serial.println("MPU6050 Found!");
-	mpu_config_setup(mpu);
+	// while (!mpu.begin()) {}
+	// Serial.println("MPU6050 Found!");
+	// mpu_config_setup(mpu);
 
 }
 
 
 
 void loop() {
-	// final code will be written here
+	motor_test();
 }
 
 
