@@ -158,36 +158,43 @@ void motor_test() {
 	String s = Serial.readString();
 	s.trim();
 
-	String LR = s.substring(0, 1);
+	int index = s.indexOf(' ');
 
-	int speed = s.substring(1).toInt();
+	String left = s.substring(0, index);
+	String right = s.substring(index+1);
 
-	Serial.println(LR);
-	Serial.println(speed);
+	int left_speed = left.toInt();
+	int right_speed = right.toInt();
+
+	Serial.println(left_speed);
+	Serial.println(right_speed);
 	Serial1.println("-----");
 
-	if (LR == "f") {
-		wheels.rightMotor(speed);
-		wheels.leftMotor(speed);
-	}
+	wheels.leftMotor(left_speed);
+	wheels.rightMotor(right_speed);
 
-	if (LR == "b") {
-		wheels.rightMotor(-speed);
-		wheels.leftMotor(-speed);
-	}
+	// if (LR == "l") {
+	// 	wheels.rightMotor(speed);
+	// 	wheels.leftMotor(speed);
+	// }
 
-	if (LR == "r") {
-		wheels.rightMotor(-speed);
-		wheels.leftMotor(speed);
-	}
+	// if (LR == "r") {
+	// 	wheels.rightMotor(-speed);
+	// 	wheels.leftMotor(-speed);
+	// }
 
-	if (LR == "l") {
-		wheels.rightMotor(speed);
-		wheels.leftMotor(-speed);
-	}
+	// if (LR == "r") {
+	// 	wheels.rightMotor(-speed);
+	// 	wheels.leftMotor(speed);
+	// }
 
-	if (LR == "s") {
-		wheels.leftMotor(0);
-		wheels.rightMotor(0);
-	}
+	// if (LR == "l") {
+	// 	wheels.rightMotor(speed);
+	// 	wheels.leftMotor(-speed);
+	// }
+
+	// if (LR == "s") {
+	// 	wheels.leftMotor(0);
+	// 	wheels.rightMotor(0);
+	// }
 }
