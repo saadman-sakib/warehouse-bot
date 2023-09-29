@@ -17,8 +17,8 @@ private:
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
 
-		Serial.print("left motor running forward at speed: ");
-		Serial.println(a);
+		// Serial.print("left motor running forward at speed: ");
+		// Serial.println(a);
 		
 		analogWrite(LEFT_R_PWM, a);
 		analogWrite(LEFT_L_PWM, 0);
@@ -27,8 +27,8 @@ private:
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
 
-		Serial.print("left motor running backward at speed: ");
-		Serial.println(a);
+		// Serial.print("left motor running backward at speed: ");
+		// Serial.println(a);
 		
 		analogWrite(LEFT_R_PWM, 0);
 		analogWrite(LEFT_L_PWM, a);
@@ -37,8 +37,8 @@ private:
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
 
-		Serial.print("right motor running forward at speed: ");
-		Serial.println(a);
+		// Serial.print("right motor running forward at speed: ");
+		// Serial.println(a);
 		
 		analogWrite(RIGHT_R_PWM, 0);
 		analogWrite(RIGHT_L_PWM, a);
@@ -47,16 +47,16 @@ private:
 		a = min(a, MAX_SPEED);
 		a = max(a, 0);
 		
-		Serial.print("right motor running backward at speed: ");
-		Serial.println(a);
+		// Serial.print("right motor running backward at speed: ");
+		// Serial.println(a);
 
 		analogWrite(RIGHT_R_PWM, a);
 		analogWrite(RIGHT_L_PWM, 0);
 	}
 
 public:
-	int leftSpeed=20;
-	int rightSpeed=20;
+	int leftSpeed=100;
+	int rightSpeed=100;
 
 	void init( int left_r=5, int left_l=6, int right_r=9, int right_l=10 ) {
         this->RIGHT_L_PWM = right_l;
@@ -87,12 +87,12 @@ public:
 	}
 
 	void rotateRight(){
-		this->leftForward(60);
-		this->rightBackward(60);
+		this->leftForward(100);
+		this->rightBackward(100);
 	}
 
 	void rotateLeft(){
-		this->leftBackward(60);
-		this->rightForward(60);
+		this->leftBackward(100);
+		this->rightForward(100);
 	}
 };
